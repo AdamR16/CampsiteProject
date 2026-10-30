@@ -1,4 +1,5 @@
 package org.example;
+import java.time.LocalDate;
 
 public class Plot {
 
@@ -67,6 +68,37 @@ public class Plot {
         return facilities; }
     public myList<Booking> getBookings() {
         return bookings; }
+
+
+    public boolean isAvailable(LocalDate start, LocalDate end) {
+        for (Booking b : bookings) {
+            if (start.isBefore(b.getEnd()) && b.getStart().isBefore(end)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean matches(BookingCheck r) {
+        if (r.getType() != null && type != r.getType()) {
+            return false;
+        }
+        if (r.needsPower() && !hasPower) {
+            return false;
+        }
+        if (sizeM2 < r.getMinSize()) {
+            return false;
+        }
+        if (bedrooms < r.getMinBedrooms()) {
+            return false;
+        }
+        if (costPerNight > r.getMaxCostPerNight()) {
+            return false;
+        }
+        if (type != PlotType.EMPTY_PITCH && beds < r.getNumGuests()) {
+            return false;
+        }
+        return isAvailable(r.getStart(), r.getEnd());
+    }
 
     public String toString() {
         return id + " (" + type + ", " + sizeM2 + "m2, €" + costPerNight + "/night)";
