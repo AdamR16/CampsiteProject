@@ -1,6 +1,6 @@
 package org.example;
 import java.time.LocalDate;
-
+//kkkkk
 public class Plot {
 
     public enum PlotType { STATIC_HOME, BUNGALOW, APARTMENT, EMPTY_PITCH }

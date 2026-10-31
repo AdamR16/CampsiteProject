@@ -51,4 +51,7 @@ public class Booking {
         return "Booking #" + id + ": guest " + guestId + ", plot " + plot.getId()
                 + ", " + start + " to " + end + ", €" + getTotalCost();
     }
+    public boolean isPending(LocalDate today) {
+        return !end.isBefore(today);
+    }
 }
