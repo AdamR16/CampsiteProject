@@ -40,13 +40,12 @@ public class Plot {
         }
     }
 
-    public void addFacility(String facility) {
-        facilities.add(facility);
+    public void addBooking(Booking b) {
+        bookings.add(b);
     }
-
-
-    public void addBooking(Booking b) { bookings.add(b); }
-    public boolean removeBooking(Booking b) { return bookings.remove(b); }
+    public boolean removeBooking(Booking b) {
+        return bookings.remove(b);
+    }
 
     public String getId() {
         return id; }

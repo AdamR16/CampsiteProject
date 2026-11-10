@@ -53,10 +53,6 @@ public class Campsite {
         areas.add(area);
     }
 
-    public boolean removeArea(CampingArea area) {
-        return areas.remove(area);
-    }
-
     public String getName() {
         return name; }
     public String getAddress() {

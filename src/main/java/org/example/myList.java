@@ -57,7 +57,7 @@ public class myList<T> implements Iterable<T> {
                 if (previous == null) {
                     head = current.next;         // case 1: removing the head
                 } else {
-                    previous.next = current.next; // case 2/3: skip over current
+                    previous.next = current.next; // case 2: skip over current
                 }
                 if (current == tail) {
                     tail = previous;             // case 3: removing the tail, move tail back
@@ -83,6 +83,7 @@ public class myList<T> implements Iterable<T> {
     }
 
     public boolean contains(T element) {
+
         return indexOf(element) != -1;
     }
     public int size() {

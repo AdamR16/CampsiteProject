@@ -35,8 +35,6 @@ public class CampingArea {
     }
     public String getId() {
         return id; }
-    public String getDescription() {
-        return description; }
     public myList<Plot> getPlots() {
         return plots; }
 

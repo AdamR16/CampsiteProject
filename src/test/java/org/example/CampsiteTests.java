@@ -21,7 +21,7 @@ public class CampsiteTests {
         system.addCampsite(campsite);
         guest = system.addGuest("Ann Murphy", LocalDate.of(1990, 1, 1), "Cork", "087", "ann@x.ie", "");
     }
-
+// helper to make tests shorter
     private BookingCheck request(String start, String end) {
         return new BookingCheck(guest.getId(), LocalDate.parse(start), LocalDate.parse(end),
                 2, Plot.PlotType.BUNGALOW, true, 20, 1, 150);
