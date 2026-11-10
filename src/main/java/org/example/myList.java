@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.Iterator;
 
 public class myList<T> implements Iterable<T> {
@@ -12,7 +11,6 @@ public class myList<T> implements Iterable<T> {
             this.contents = contents;
         }
     }
-
     private Node head;
     private Node tail;
     private int size;
@@ -87,15 +85,12 @@ public class myList<T> implements Iterable<T> {
     public boolean contains(T element) {
         return indexOf(element) != -1;
     }
-
     public int size() {
         return size;
     }
-
     public boolean isEmpty() {
         return size == 0;
     }
-
     public void clear() {
         head = null;
         tail = null;

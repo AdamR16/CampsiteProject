@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("main"), 1000, 720);
+        scene = new Scene(loadFXML("main"), 1000, 750);
         stage.setTitle("Campsite Manager");
         stage.setScene(scene);
         stage.show();

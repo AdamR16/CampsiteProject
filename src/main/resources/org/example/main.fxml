@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MainController">
    <children>
       <TabPane layoutX="65.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -201,7 +201,7 @@
                               <CheckBox fx:id="bookPower" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="Needs Power?" />
                               <TextField fx:id="minSize" promptText="Minimum Size" />
                               <TextField fx:id="minBedrooms" promptText="Minimum Bedrooms" />
-                              <TextField onAction="#budget" promptText="Budget Per Night" />
+                              <TextField fx:id="budget" promptText="Budget Per Night" />
                               <Button alignment="CENTER" cache="true" cacheHint="SCALE" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onMakeBooking" pickOnBounds="false" prefHeight="28.0" prefWidth="400.0" text="Make Booking" textAlignment="CENTER" translateX="300.0">
                                  <font>
                                     <Font name="Candara Bold Italic" size="15.0" />

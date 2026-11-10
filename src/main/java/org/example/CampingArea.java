@@ -33,7 +33,6 @@ public class CampingArea {
     public boolean removePlot(Plot plot) {
         return plots.remove(plot);
     }
-
     public String getId() {
         return id; }
     public String getDescription() {
