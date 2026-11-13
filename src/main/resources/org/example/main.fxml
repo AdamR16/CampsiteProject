@@ -100,7 +100,7 @@
                               <ComboBox fx:id="plotAreaBox" prefHeight="26.0" prefWidth="172.0" promptText="Choose Camping Area" />
                               <TextField fx:id="plotId" promptText="Plot ID" />
                               <ComboBox fx:id="plotTypeBox" prefWidth="150.0" promptText="Plot Type" />
-                              <ComboBox fx:id="powerCheck" prefWidth="150.0" promptText="Has Power" />
+                              <CheckBox fx:id="powerCheck" mnemonicParsing="false" text="Has Power" />
                               <TextField fx:id="bedrooms" promptText="Bedrooms" />
                               <TextField fx:id="beds" promptText="Beds" />
                               <TextField fx:id="size" promptText="size (m2)" />

@@ -88,7 +88,7 @@ public class MainController {
     private ComboBox<Plot.PlotType> plotTypeBox;
 
     @FXML
-    private ComboBox<?> powerCheck;
+    private CheckBox powerCheck;
     @FXML
     private TextField size;
     @FXML
@@ -130,7 +130,7 @@ public class MainController {
 
     @FXML
     void onAddPlot(ActionEvent event) {
-        Plot plot = new Plot(plotId.getText(), plotTypeBox.getValue(), bookPower.isSelected(),
+        Plot plot = new Plot(plotId.getText(), plotTypeBox.getValue(), powerCheck.isSelected(),
                 Integer.parseInt(bedrooms.getText()), Integer.parseInt(beds.getText()),
                 Double.parseDouble(size.getText()), Double.parseDouble(cost.getText()),
                 photo.getText());
