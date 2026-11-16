@@ -99,7 +99,10 @@ public class MainController {
     private TreeView<Object> tree;
     @FXML
     private TextField budget;
-
+    @FXML
+    private ComboBox<Campsite> reportCampsiteBox;
+    @FXML
+    private TextArea reportArea;
     @FXML
     void BookCampsiteChsen(ActionEvent event) {
         loadAreas(bookArea, bookCampsiteBox);
@@ -141,9 +144,9 @@ public class MainController {
 
     @FXML
     void onCancelBooking(ActionEvent event) {
-            show(system.cancelBooking(Integer.parseInt(cancelId.getText()))
-                    ? "Booking cancelled" : "No booking with that id");
-            refreshTree();
+        show(system.cancelBooking(Integer.parseInt(cancelId.getText()))
+                ? "Booking cancelled" : "No booking with that id");
+        refreshTree();
     }
 
     @FXML
@@ -184,7 +187,21 @@ public class MainController {
         guestRecord.setText(system.viewGuestRecord(
                 Integer.parseInt(guestLookup.getText()), LocalDate.now()));
     }
-//---------------------SceneBuilder Skeleton completed, further methods below---
+    @FXML
+    void onViewCampsitePending(ActionEvent event) {
+        Campsite c = reportCampsiteBox.getValue();
+        if (c == null) {
+            show("Choose a campsite first");
+            return;
+        }
+        reportArea.setText(system.viewPendingBookings(c, LocalDate.now()));
+    }
+
+    @FXML
+    void onViewAllPending(ActionEvent event) {
+        reportArea.setText(system.viewAllPendingBookings(LocalDate.now()));
+    }
+    //---------------------SceneBuilder Skeleton completed, further methods below---
     // All the data lives here, not in the JavaFX controls
     private CampsiteSystem system = new CampsiteSystem();
 
@@ -226,11 +243,13 @@ public class MainController {
         loadCampsites(areaCampsiteBox);
         loadCampsites(plotCampsiteBox);
         loadCampsites(bookCampsiteBox);
+        loadCampsites(reportCampsiteBox);
     }
 
     private void show(String message) {
         new Alert(Alert.AlertType.INFORMATION, message).showAndWait();
     }
+
     private void addFacilities(myList<String> list, String text) {
         String current = "";
         for (int i = 0; i <= text.length(); i++) {
@@ -244,6 +263,7 @@ public class MainController {
             }
         }
     }
+
     private void loadCampsites(ComboBox<Campsite> box) {
         box.setValue(null);
         box.getItems().clear();
@@ -251,6 +271,7 @@ public class MainController {
             box.getItems().add(c);
         }
     }
+
     private void loadAreas(ComboBox<CampingArea> areaBox, ComboBox<Campsite> campsiteBox) {
         areaBox.setValue(null);
         areaBox.getItems().clear();
@@ -258,6 +279,27 @@ public class MainController {
             for (CampingArea a : campsiteBox.getValue().getAreas()) {
                 areaBox.getItems().add(a);
             }
+        }
+    }
+
+    @FXML
+    void onSave(ActionEvent event) {
+        try {
+            CampsiteStorage.save(system, "campsite_data.bin");
+            show("Saved");
+        } catch (Exception e) {
+            show("Could not save: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    void onLoad(ActionEvent event) {
+        try {
+            system = CampsiteStorage.load("campsite_data.bin");
+            refresh();
+            show("Loaded");
+        } catch (Exception e) {
+            show("Could not load: " + e.getMessage());
         }
     }
 }

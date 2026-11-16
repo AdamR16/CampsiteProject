@@ -1,7 +1,7 @@
 package org.example;
 import java.time.LocalDate;
 //kkkkk
-public class Plot {
+public class Plot implements java.io.Serializable {
 
     public enum PlotType { STATIC_HOME, BUNGALOW, APARTMENT, EMPTY_PITCH }
 

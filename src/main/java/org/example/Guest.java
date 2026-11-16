@@ -2,7 +2,7 @@ package org.example;
 
 import java.time.LocalDate;
 
-public class Guest {
+public class Guest implements java.io.Serializable {
     private int id;
     private String name;
     private LocalDate dateOfBirth;

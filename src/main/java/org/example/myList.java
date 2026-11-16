@@ -1,9 +1,9 @@
 package org.example;
 import java.util.Iterator;
 
-public class myList<T> implements Iterable<T> {
+public class myList<T> implements Iterable<T> , java.io.Serializable {
 
-    private class Node {
+    private class Node implements java.io.Serializable {
         private T contents;
         private Node next;
 

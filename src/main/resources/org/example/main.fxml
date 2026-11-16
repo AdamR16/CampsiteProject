@@ -264,12 +264,91 @@
                                     </Lighting>
                                  </effect>
                               </Button>
+                        <Separator prefWidth="200.0" />
+                        <Button alignment="CENTER" cache="true" cacheHint="SCALE" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSave" pickOnBounds="false" prefHeight="28.0" prefWidth="600.0" text="Save Data" textAlignment="CENTER" textFill="RED" translateX="200.0">
+                           <font>
+                              <Font name="Candara Bold Italic" size="15.0" />
+                           </font>
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <ColorAdjust />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                        </Button>
+                        <Separator prefWidth="200.0" />
+                        <Button alignment="CENTER" cache="true" cacheHint="SCALE" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLoad" pickOnBounds="false" prefHeight="28.0" prefWidth="600.0" text="Load Data" textAlignment="CENTER" textFill="RED" translateX="200.0">
+                           <font>
+                              <Font name="Candara Bold Italic" size="15.0" />
+                           </font>
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <ColorAdjust />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                        </Button>
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
+           <Tab text="Reports">
+              <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                       <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <padding>
+                             <Insets top="15.0" />
+                          </padding>
+                          <children>
+                             <ComboBox fx:id="reportCampsiteBox" prefWidth="150.0" promptText="Choose Campsite" />
+                             <Button alignment="CENTER" cache="true" cacheHint="SCALE" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onViewCampsitePending" pickOnBounds="false" prefHeight="28.0" prefWidth="400.0" text="View Pending Bookings for Campsite" textAlignment="CENTER" translateX="300.0">
+                                <font>
+                                   <Font name="Candara Bold Italic" size="15.0" />
+                                </font>
+                                <effect>
+                                   <Lighting>
+                                      <bumpInput>
+                                         <ColorAdjust />
+                                      </bumpInput>
+                                      <light>
+                                         <Light.Distant />
+                                      </light>
+                                   </Lighting>
+                                </effect>
+                             </Button>
+                             <Button alignment="CENTER" cache="true" cacheHint="SCALE" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onViewAllPending" pickOnBounds="false" prefHeight="28.0" prefWidth="400.0" text="View All Pending Bookings" textAlignment="CENTER" translateX="300.0">
+                                <font>
+                                   <Font name="Candara Bold Italic" size="15.0" />
+                                </font>
+                                <effect>
+                                   <Lighting>
+                                      <bumpInput>
+                                         <ColorAdjust />
+                                      </bumpInput>
+                                      <light>
+                                         <Light.Distant />
+                                      </light>
+                                   </Lighting>
+                                </effect>
+                             </Button>
+                             <TextArea fx:id="reportArea" editable="false" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                          </children>
+                       </VBox>
+                    </children>
+                 </AnchorPane>
+              </content>
+           </Tab>
         </tabs>
       </TabPane>
    </children>

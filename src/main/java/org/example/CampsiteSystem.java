@@ -2,7 +2,7 @@ package org.example;
 //hh
 import java.time.LocalDate;
 
-public class CampsiteSystem {
+public class CampsiteSystem implements java.io.Serializable {
     private myList<Campsite> campsites = new myList<>();
     private myList<Guest> guests = new myList<>();
     private int nextGuestId = 1;
@@ -116,6 +116,47 @@ public class CampsiteSystem {
         nextGuestId = 1;
         nextBookingId = 1;
     }
+
+
+    // Pending bookings report. Pass one campsite for the campsite view, or null for the whole system.
+    public String viewPendingBookings(Campsite only, LocalDate today) {
+        String text = "";
+        int count = 0;
+        double cost = 0;
+        for (Campsite c : campsites) {
+            if (only != null && c != only) {
+                continue;                                   // skip other campsites in the single view
+            }
+            text += "CAMPSITE: " + c.getName() + "\n";
+            for (CampingArea a : c.getAreas()) {
+                text += "  AREA: " + a.getId() + "\n";
+                for (Plot p : a.getPlots()) {
+                    text += "    PLOT: " + p.getId() + "\n";
+                    for (Booking b : p.getBookings()) {
+                        if (b.isPending(today)) {
+                            Guest g = findGuest(b.getGuestId());
+                            text += "      #" + b.getId() + " " + (g == null ? "unknown guest" : g.getName())
+                                    + ", " + b.getStart() + " to " + b.getEnd()
+                                    + ", " + b.getNumGuests() + " guest(s), " + money(b.getTotalCost()) + "\n";
+                            count++;
+                            cost += b.getTotalCost();
+                        }
+                    }
+                }
+            }
+        }
+        return text + (only == null ? "OVERALL TOTAL: " : "TOTAL: ")
+                + count + " pending booking(s), " + money(cost) + "\n";
+    }
+
+    public String viewAllPendingBookings(LocalDate today) {
+        return viewPendingBookings(null, today);
+    }
+
+    private String money(double amount) {
+        return "€" + String.format(java.util.Locale.ENGLISH, "%.2f", amount);
+    }
+
 
     public myList<Campsite> getCampsites() {
         return campsites; }

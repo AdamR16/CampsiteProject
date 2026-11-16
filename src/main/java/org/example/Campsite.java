@@ -1,7 +1,7 @@
 package org.example;
 
 
-public class Campsite {
+public class Campsite implements java.io.Serializable {
     private String name;
     private String address;
     private String phone;

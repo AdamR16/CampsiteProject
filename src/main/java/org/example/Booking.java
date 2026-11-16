@@ -3,7 +3,7 @@ package org.example;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Booking {
+public class Booking implements java.io.Serializable  {
     private int id;
     private int guestId;
     private LocalDate start;

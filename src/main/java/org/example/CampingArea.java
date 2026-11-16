@@ -1,6 +1,6 @@
 package org.example;
 
-public class CampingArea {
+public class CampingArea implements java.io.Serializable {
     private String id;
     private String description;
     private myList<Plot> plots = new myList<>();
