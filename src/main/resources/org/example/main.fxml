@@ -27,7 +27,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TreeView fx:id="tree" layoutX="202.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TreeView fx:id="tree" layoutX="202.0" layoutY="95.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onRemovePlot" prefHeight="28.0" prefWidth="250.0" text="Remove Selected Plot" textFill="RED" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="10.0">
+                           <font>
+                              <Font name="Candara Bold Italic" size="15.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>

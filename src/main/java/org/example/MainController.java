@@ -201,6 +201,19 @@ public class MainController {
     void onViewAllPending(ActionEvent event) {
         reportArea.setText(system.viewAllPendingBookings(LocalDate.now()));
     }
+    @FXML
+    void onRemovePlot(ActionEvent event) {
+        TreeItem<Object> item = tree.getSelectionModel().getSelectedItem();
+        if (item == null || !(item.getValue() instanceof Plot)) {
+            show("Click a plot in the tree first");
+            return;
+        }
+        Plot plot = (Plot) item.getValue();
+        CampingArea area = (CampingArea) item.getParent().getValue();
+        Campsite campsite = (Campsite) item.getParent().getParent().getValue();
+        show(system.removePlot(campsite, area, plot));
+        refreshTree();
+    }
     //---------------------SceneBuilder Skeleton completed, further methods below---
     // All the data lives here, not in the JavaFX controls
     private CampsiteSystem system = new CampsiteSystem();

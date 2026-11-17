@@ -148,7 +148,46 @@ public class CampsiteSystem implements java.io.Serializable {
         return text + (only == null ? "OVERALL TOTAL: " : "TOTAL: ")
                 + count + " pending booking(s), " + money(cost) + "\n";
     }
+    // Removes a plot, then tries to move its bookings
+    public String removePlot(Campsite campsite, CampingArea area, Plot plot) {
+        if (!area.removePlot(plot)) {
+            throw new IllegalArgumentException("That plot is not in that area");
+        }
+        int moved = 0;
+        String notMoved = "";
+        while (plot.getBookings().size() > 0) {
+            Booking b = plot.getBookings().get(0);
+            plot.removeBooking(b);
+            Plot replacement = findReplacement(campsite, plot, b);
+            if (replacement == null) {
+                notMoved += " #" + b.getId();
+            } else {
+                b.setPlot(replacement);
+                replacement.addBooking(b);
+                moved++;
+            }
+        }
+        String message = "Plot " + plot.getId() + " removed. " + moved + " booking(s) moved.";
+        if (!notMoved.isEmpty()) {
+            message += " Could not move (cancelled):" + notMoved;
+        }
+        return message;
+    }
 
+    // Finds another plot in the campsite that suits this booking, or null
+    private Plot findReplacement(Campsite campsite, Plot removed, Booking b) {
+        for (CampingArea a : campsite.getAreas()) {
+            for (Plot p : a.getPlots()) {
+                boolean sameType = p.getType() == removed.getType();
+                boolean enoughBeds = p.getType() == Plot.PlotType.EMPTY_PITCH || p.getBeds() >= b.getNumGuests();
+                boolean powerOk = !removed.hasPower() || p.hasPower();
+                if (sameType && enoughBeds && powerOk && p.isAvailable(b.getStart(), b.getEnd())) {
+                    return p;
+                }
+            }
+        }
+        return null;
+    }
     public String viewAllPendingBookings(LocalDate today) {
         return viewPendingBookings(null, today);
     }
